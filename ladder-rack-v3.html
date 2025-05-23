@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ladder Rack V3 AR View</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      text-align: center;
+    }
+    model-viewer {
+      width: 100%;
+      max-width: 600px;
+      height: 70vh;
+      margin: 0 auto;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      border: 1px solid #000;
+      text-decoration: none;
+      color: #000;
+      border-radius: 5px;
+    }
+    a.button:hover {
+      background: #000;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ladder Rack V3 – AR View</h1>
+  <model-viewer
+    src="https://thething303.github.io/usdz-file-hosting/Ladder-Rack-v3.glb"
+    alt="Ladder Rack Model"
+    ar
+    ar-modes="scene-viewer webxr quick-look"
+    auto-rotate
+    camera-controls
+    shadow-intensity="1">
+  </model-viewer>
+  <br>
+  <a href="index.html" class="button">← Back to Model List</a>
+</body>
+</html>
