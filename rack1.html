@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <div id="ar-container">
+  <!-- Placeholder for AR viewer link -->
+</div>
+
+<script>
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const arContainer = document.getElementById('ar-container');
+
+  if (isIOS) {
+    // iOS: Use AR Quick Look with USDZ
+    arContainer.innerHTML = `
+      <a rel="ar" href="model.usdz">
+        <img src="preview.jpg" alt="View in AR" style="width: 100px;">
+      </a>
+    `;
+  } else {
+    // Android: Use Scene Viewer with GLB
+    arContainer.innerHTML = `
+      <a href="intent://arvr.google.com/scene-viewer/1.0?file=https://example.com/model.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://example.com/fallback;end;">
+        <img src="preview.jpg" alt="View in AR" style="width: 100px;">
+      </a>
+    `;
+  }
+</script>
+
+  
   <meta charset="UTF-8">
   <title>Rack 1 AR View</title>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
