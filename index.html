@@ -5,18 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hilux Rack AR Models</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      color: #222;
+    html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
+      overflow: hidden; /* Prevent scroll in both directions */
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    body {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     h1 {
@@ -26,22 +31,22 @@
 
     .button {
       display: block;
-      width: 90%;
-      max-width: 400px;
-      padding: 15px 25px;
-      margin: 15px auto;
       text-decoration: none;
       color: #000;
-      font-weight: bold;
       border: 2px solid #000;
       border-radius: 8px;
-      background: #fff;
+      padding: 12px 20px;
+      margin: 10px auto;
+      background-color: #fff;
       transition: background 0.2s ease, color 0.2s ease;
       font-size: 1rem;
+      width: 90%;
+      max-width: 300px;
+      box-sizing: border-box;
     }
 
     .button:hover {
-      background: #000;
+      background-color: #000;
       color: #fff;
     }
 
@@ -52,7 +57,7 @@
 
       .button {
         font-size: 1.1rem;
-        padding: 18px 30px;
+        padding: 15px 25px;
       }
     }
   </style>
