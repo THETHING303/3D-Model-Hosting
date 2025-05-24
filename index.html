@@ -2,39 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AR Model Gallery</title>
   <style>
+    /* General styles */
     body {
       font-family: Arial, sans-serif;
       background: #f9f9f9;
       color: #222;
       text-align: center;
-      padding: 50px;
+      padding: 20px;
+      margin: 0;
     }
+
     h1 {
-      margin-bottom: 40px;
+      margin-bottom: 30px;
+      font-size: 2rem; /* Adjusted for better mobile readability */
     }
+
     a {
       display: block;
       margin: 20px auto;
       padding: 15px 25px;
-      width: 300px;
+      width: 80%; /* Button takes 80% of the screen width */
+      max-width: 400px; /* Max width to ensure it's not too wide on large screens */
       border: 2px solid #000;
       text-decoration: none;
       color: #000;
       font-weight: bold;
       border-radius: 8px;
       transition: background 0.2s ease;
+      font-size: 1rem;
     }
+
     a:hover {
       background: #000;
       color: #fff;
+    }
+
+    /* Mobile responsive adjustments */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem; /* Slightly smaller heading on mobile */
+      }
+
+      a {
+        width: 90%; /* Increase button width to fit more on smaller screens */
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
   <h1>AR Model Viewer</h1>
-  <a href="Hilux-Rack-V1.html">View Rack 1 (USDZ)</a>
-  <a href="Hilux-Rack-V3.html">View Ladder Rack V3 (GLB)</a>
+  <a href="Hilux-Rack-V1.html">View Hilux Rack V1</a>
+  <a href="Hilux-Rack-V3.html">View Hilux Rack V3</a>
 </body>
 </html>
