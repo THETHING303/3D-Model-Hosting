@@ -14,10 +14,10 @@
       padding: 0;
       margin: 0;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      flex-direction: column;
       overflow: hidden; /* Prevent scrolling */
     }
 
@@ -78,7 +78,7 @@
       font-size: 1rem;
     }
 
-    /* Adjustments for small screens */
+    /* Mobile adjustments */
     @media (max-width: 600px) {
       body {
         padding: 0;
@@ -97,7 +97,6 @@
       a.button {
         padding: 10px 20px;
         font-size: 0.9rem;
-        margin-top: 20px;
       }
     }
 
@@ -138,10 +137,8 @@
   <!-- AR Link will be injected here -->
   <div id="ar-container"></div>
 
-  <!-- Back Button, placed outside the model-viewer container -->
-  <div style="margin-top: 20px;">
-    <a href="index.html" class="button">← Back to Model List</a>
-  </div>
+  <br>
+  <a href="index.html" class="button">← Back to Model List</a>
 
   <script>
     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
