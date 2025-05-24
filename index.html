@@ -13,6 +13,11 @@
       text-align: center;
       padding: 20px;
       margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
     }
 
     h1 {
@@ -50,6 +55,19 @@
         width: 90%; /* Increase button width to fit more on smaller screens */
         padding: 12px 20px;
         font-size: 0.9rem;
+      }
+    }
+
+    /* Desktop adjustments */
+    @media (min-width: 1024px) {
+      h1 {
+        font-size: 2.5rem; /* Increase heading size for larger screens */
+      }
+
+      a {
+        width: 40%; /* Make buttons smaller on large screens for better visual balance */
+        font-size: 1.2rem;
+        padding: 20px 30px;
       }
     }
   </style>
