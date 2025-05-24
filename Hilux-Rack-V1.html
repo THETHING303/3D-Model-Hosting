@@ -94,7 +94,7 @@
     ar-modes="scene-viewer quick-look webxr"
     auto-rotate
     camera-controls
-    src="https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-v1.1.glb">
+    src="https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-V1.1.glb">
   </model-viewer>
 
   <!-- AR Link will be injected here -->
@@ -120,7 +120,7 @@
       `;
     } else {
       // Android: Use Scene Viewer with GLB
-      const glbUrl = "https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-v1.1.glb";
+      const glbUrl = "https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-V1.1.glb";
       const encodedGlbUrl = encodeURIComponent(glbUrl);
 
       const sceneViewerUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${encodedGlbUrl}&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${glbUrl};end;`;
