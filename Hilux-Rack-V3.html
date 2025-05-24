@@ -11,18 +11,20 @@
       font-family: Arial, sans-serif;
       background: #fff;
       text-align: center;
-      padding: 20px;
+      padding: 0;
       margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       flex-direction: column;
+      overflow: hidden; /* Prevent scrolling */
     }
 
     h1 {
       font-size: 2rem; /* Adjusted for desktop readability */
       margin-bottom: 20px;
+      max-width: 90%;
     }
 
     /* Button styles */
@@ -46,9 +48,10 @@
     /* Model Viewer styles */
     model-viewer {
       width: 100%;
-      height: 400px; /* Ensure height is large enough to be visible */
+      height: 60vh; /* Make it take 60% of the viewport height */
       margin: 20px auto;
       max-width: 100%;
+      overflow: hidden;
     }
 
     /* Container for the AR link */
@@ -78,15 +81,17 @@
     /* Mobile adjustments */
     @media (max-width: 600px) {
       body {
-        padding: 10px;
+        padding: 0;
+        margin: 0;
       }
 
       h1 {
         font-size: 1.5rem;
+        margin-bottom: 10px;
       }
 
       model-viewer {
-        height: 250px;
+        height: 60vh; /* Model viewer takes 60% of the screen height */
       }
 
       a.button {
@@ -146,24 +151,4 @@
       modelViewer.setAttribute('src', usdzUrl);
       arContainer.innerHTML = `
         <a rel="ar" href="${usdzUrl}">
-          <img src="https://developer.apple.com/arkit/images/quicklook/gallery-placeholder.png" alt="View in AR" width="200">
-          <p>Tap to view in AR (iOS)</p>
-        </a>
-      `;
-    } else {
-      // Android: Use Scene Viewer with GLB
-      const glbUrl = "https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-V3.glb";
-      const encodedGlbUrl = encodeURIComponent(glbUrl);
-
-      const sceneViewerUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${encodedGlbUrl}&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${glbUrl};end;`;
-
-      modelViewer.setAttribute('src', glbUrl);
-      arContainer.innerHTML = `
-        <a href="${sceneViewerUrl}">
-          <p>Tap to view in AR (Android)</p>
-        </a>
-      `;
-    }
-  </script>
-</body>
-</html>
+          <img src="https://deve
