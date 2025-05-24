@@ -151,4 +151,24 @@
       modelViewer.setAttribute('src', usdzUrl);
       arContainer.innerHTML = `
         <a rel="ar" href="${usdzUrl}">
-          <img src="https://deve
+          <img src="https://developer.apple.com/arkit/images/quicklook/gallery-placeholder.png" alt="View in AR" width="200">
+          <p>Tap to view in AR (iOS)</p>
+        </a>
+      `;
+    } else {
+      // Android: Use Scene Viewer with GLB
+      const glbUrl = "https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-V3.glb";
+      const encodedGlbUrl = encodeURIComponent(glbUrl);
+
+      const sceneViewerUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${encodedGlbUrl}&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${glbUrl};end;`;
+
+      modelViewer.setAttribute('src', glbUrl);
+      arContainer.innerHTML = `
+        <a href="${sceneViewerUrl}">
+          <p>Tap to view in AR (Android)</p>
+        </a>
+      `;
+    }
+  </script>
+</body>
+</html>
