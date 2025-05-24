@@ -1,31 +1,85 @@
-<script>
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  const arContainer = document.getElementById('ar-container');
-  const modelViewer = document.getElementById('modelViewer');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hilux Rack V1 AR View</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      text-align: center;
+      padding: 50px;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      border: 1px solid #000;
+      text-decoration: none;
+      color: #000;
+      border-radius: 5px;
+    }
+    a.button:hover {
+      background: #000;
+      color: #fff;
+    }
+    model-viewer {
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hilux Rack V1 – AR View</h1>
 
-  if (isIOS) {
-    // iOS: Use AR Quick Look with USDZ
-    const usdzUrl = "https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-v1.usdz";
-    modelViewer.setAttribute('src', usdzUrl);
-    arContainer.innerHTML = `
-      <a rel="ar" href="${usdzUrl}">
-        <img src="https://developer.apple.com/arkit/images/quicklook/gallery-placeholder.png" alt="View in AR" width="200">
-        <p>Tap to view in AR (iOS)</p>
-      </a>
-    `;
-  } else {
-    // Android: Use Scene Viewer with GLB
-    const glbUrl = "https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-v1.glb";
-    const encodedGlbUrl = encodeURIComponent(glbUrl);
+  <!-- 3D Preview -->
+  <model-viewer id="modelViewer"
+    alt="Hilux Rack V1 Model"
+    ar
+    ar-modes="scene-viewer quick-look webxr"
+    auto-rotate
+    camera-controls>
+  </model-viewer>
 
-    const sceneViewerUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${encodedGlbUrl}&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${glbUrl};end;`;
+  <!-- AR Link will be injected here -->
+  <div id="ar-container"></div>
 
-    modelViewer.setAttribute('src', glbUrl);
-    arContainer.innerHTML = `
-      <a href="${sceneViewerUrl}">
-        <img src="https://developer.apple.com/arkit/images/quicklook/gallery-placeholder.png" alt="View in AR" width="200">
-        <p>Tap to view in AR (Android)</p>
-      </a>
-    `;
-  }
-</script>
+  <br>
+  <a href="index.html" class="button">← Back to Model List</a>
+
+  <script>
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const arContainer = document.getElementById('ar-container');
+    const modelViewer = document.getElementById('modelViewer');
+
+    if (isIOS) {
+      // iOS: Use AR Quick Look with USDZ
+      const usdzUrl = "https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-v1.usdz";
+      modelViewer.setAttribute('src', usdzUrl);
+      arContainer.innerHTML = `
+        <a rel="ar" href="${usdzUrl}">
+          <img src="https://developer.apple.com/arkit/images/quicklook/gallery-placeholder.png" alt="View in AR" width="200">
+          <p>Tap to view in AR (iOS)</p>
+        </a>
+      `;
+    } else {
+      // Android: Use Scene Viewer with GLB
+      const glbUrl = "https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-v1.glb";
+      const encodedGlbUrl = encodeURIComponent(glbUrl);
+
+      const sceneViewerUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${encodedGlbUrl}&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${glbUrl};end;`;
+
+      modelViewer.setAttribute('src', glbUrl);
+      arContainer.innerHTML = `
+        <a href="${sceneViewerUrl}">
+          <img src="https://developer.apple.com/arkit/images/quicklook/gallery-placeholder.png" alt="View in AR" width="200">
+          <p>Tap to view in AR (Android)</p>
+        </a>
+      `;
+    }
+  </script>
+</body>
+</html>
