@@ -2,33 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hilux Rack V1 AR View</title>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
+    /* General styles */
     body {
       font-family: Arial, sans-serif;
       background: #fff;
       text-align: center;
-      padding: 50px;
+      padding: 20px;
+      margin: 0;
     }
+
+    h1 {
+      font-size: 1.5rem; /* Adjust font size for better mobile readability */
+      margin-bottom: 20px;
+    }
+
+    /* Button styles */
     a.button {
       display: inline-block;
-      margin-top: 30px;
-      padding: 10px 20px;
+      margin-top: 20px;
+      padding: 12px 24px;
       border: 1px solid #000;
       text-decoration: none;
       color: #000;
       border-radius: 5px;
+      font-size: 1rem;
     }
     a.button:hover {
       background: #000;
       color: #fff;
     }
+
+    /* Model Viewer responsive styles */
     model-viewer {
       width: 100%;
       max-width: 600px;
-      height: 400px;
+      height: 300px; /* Adjust height for better mobile view */
+      margin: 20px auto;
+    }
+
+    /* Container for the AR link */
+    #ar-container a {
+      display: inline-block;
+      padding: 10px;
+      border-radius: 5px;
+      background: #f0f0f0;
+      text-decoration: none;
+      color: #000;
+      max-width: 90%;
       margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    #ar-container p {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+
+    /* Adjust the layout on small screens */
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      
+      h1 {
+        font-size: 1.2rem;
+      }
+      
+      model-viewer {
+        height: 250px;
+      }
+
+      a.button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -67,11 +118,14 @@
       `;
     } else {
       // Android: Use Scene Viewer with GLB
-      const glbUrl = "https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-V1.glb";
+      const glbUrl = "https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-v1.glb";
+      const encodedGlbUrl = encodeURIComponent(glbUrl);
+
+      const sceneViewerUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${encodedGlbUrl}&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${glbUrl};end;`;
+
       modelViewer.setAttribute('src', glbUrl);
       arContainer.innerHTML = `
-        <a href="intent://arvr.google.com/scene-viewer/1.0?file=${glbUrl}&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${glbUrl};end;">
-          
+        <a href="${sceneViewerUrl}">
           <p>Tap to view in AR (Android)</p>
         </a>
       `;
