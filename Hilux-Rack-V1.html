@@ -11,18 +11,21 @@
       font-family: Arial, sans-serif;
       background: #fff;
       text-align: center;
-      padding: 20px;
+      padding: 0;
       margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
       flex-direction: column;
+      height: 100vh;
+      overflow: hidden; /* Prevent scrolling */
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 2rem; /* Adjusted for desktop readability */
       margin-bottom: 20px;
+      max-width: 90%;
+      word-wrap: break-word;
     }
 
     /* Button styles */
@@ -46,9 +49,10 @@
     /* Model Viewer styles */
     model-viewer {
       width: 100%;
-      height: 400px; /* Ensure height is large enough to be visible */
+      height: 60vh; /* Take up 60% of the viewport height */
       margin: 20px auto;
       max-width: 100%;
+      overflow: hidden;
     }
 
     /* Container for the AR link */
@@ -78,15 +82,17 @@
     /* Mobile adjustments */
     @media (max-width: 600px) {
       body {
-        padding: 10px;
+        padding: 0;
+        margin: 0;
       }
 
       h1 {
         font-size: 1.5rem;
+        margin-bottom: 10px;
       }
 
       model-viewer {
-        height: 250px;
+        height: 60vh; /* Model viewer takes 60% of the screen height */
       }
 
       a.button {
@@ -117,7 +123,7 @@
   </style>
 </head>
 <body>
-  <h1>Hilux Rack V1 – AR View</h1>
+  <h1>Hilux Rack V3 – AR View</h1>
 
   <!-- 3D Preview -->
   <model-viewer id="modelViewer"
@@ -126,7 +132,7 @@
     ar-modes="scene-viewer quick-look webxr"
     auto-rotate
     camera-controls
-    src="https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-V1.1.glb">
+    src="https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-V1.glb">
   </model-viewer>
 
   <!-- AR Link will be injected here -->
@@ -152,7 +158,7 @@
       `;
     } else {
       // Android: Use Scene Viewer with GLB
-      const glbUrl = "https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-V1.1.glb";
+      const glbUrl = "https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-V1.glb";
       const encodedGlbUrl = encodeURIComponent(glbUrl);
 
       const sceneViewerUrl = `intent://arvr.google.com/scene-viewer/1.0?file=${encodedGlbUrl}&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${glbUrl};end;`;
