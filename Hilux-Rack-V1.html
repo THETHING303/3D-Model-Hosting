@@ -1,33 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <div id="ar-container">
-  <!-- Placeholder for AR viewer link -->
-</div>
-
-<script>
-  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-  const arContainer = document.getElementById('ar-container');
-
-  if (isIOS) {
-    // iOS: Use AR Quick Look with USDZ
-    arContainer.innerHTML = `
-      <a rel="ar" href="model.usdz">
-        <img src="preview.jpg" alt="View in AR" style="width: 100px;">
-      </a>
-    `;
-  } else {
-    // Android: Use Scene Viewer with GLB
-    arContainer.innerHTML = `
-      <a href="intent://arvr.google.com/scene-viewer/1.0?file=https://example.com/model.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://example.com/fallback;end;">
-        <img src="preview.jpg" alt="View in AR" style="width: 100px;">
-      </a>
-    `;
-  }
-</script>
-
-  
   <meta charset="UTF-8">
   <title>Hilux Rack V1 AR View</title>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
@@ -63,15 +36,46 @@
   <h1>Hilux Rack V1 – AR View</h1>
 
   <!-- 3D Preview -->
-  <model-viewer src="Hilux-Rack-V1.usdz" alt="Hilux Rack V1 Model" ar ar-modes="scene-viewer quick-look webxr" auto-rotate camera-controls></model-viewer>
+  <model-viewer id="modelViewer"
+    alt="Hilux Rack V1 Model"
+    ar
+    ar-modes="scene-viewer quick-look webxr"
+    auto-rotate
+    camera-controls>
+  </model-viewer>
 
-  <!-- AR Link (for iOS) -->
-  <a rel="ar" href="Hilux-Rack-V1.usdz">
-    <img src="https://developer.apple.com/arkit/images/quicklook/gallery-placeholder.png" alt="View in AR" width="200">
-    <p>Tap to view in AR (iOS)</p>
-  </a>
+  <!-- AR Link will be injected here -->
+  <div id="ar-container"></div>
 
   <br>
   <a href="index.html" class="button">← Back to Model List</a>
+
+  <script>
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const arContainer = document.getElementById('ar-container');
+    const modelViewer = document.getElementById('modelViewer');
+
+    if (isIOS) {
+      // iOS: Use AR Quick Look with USDZ
+      const usdzUrl = "https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-v1.usdz";
+      modelViewer.setAttribute('src', usdzUrl);
+      arContainer.innerHTML = `
+        <a rel="ar" href="${usdzUrl}">
+          <img src="https://developer.apple.com/arkit/images/quicklook/gallery-placeholder.png" alt="View in AR" width="200">
+          <p>Tap to view in AR (iOS)</p>
+        </a>
+      `;
+    } else {
+      // Android: Use Scene Viewer with GLB
+      const glbUrl = "https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-V1.glb";
+      modelViewer.setAttribute('src', glbUrl);
+      arContainer.innerHTML = `
+        <a href="intent://arvr.google.com/scene-viewer/1.0?file=${glbUrl}&mode=ar_preferred#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=${glbUrl};end;">
+          <img src="https://developer.apple.com/arkit/images/quicklook/gallery-placeholder.png" alt="View in AR" width="200">
+          <p>Tap to view in AR (Android)</p>
+        </a>
+      `;
+    }
+  </script>
 </body>
 </html>
