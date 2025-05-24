@@ -31,6 +31,7 @@
       border-radius: 5px;
       font-size: 1rem;
     }
+
     a.button:hover {
       background: #000;
       color: #fff;
@@ -39,9 +40,9 @@
     /* Model Viewer responsive styles */
     model-viewer {
       width: 100%;
-      max-width: 600px;
-      height: 300px; /* Adjust height for better mobile view */
+      height: 400px; /* Ensure height is large enough to be visible */
       margin: 20px auto;
+      max-width: 100%;
     }
 
     /* Container for the AR link */
@@ -67,11 +68,11 @@
       body {
         padding: 10px;
       }
-      
+
       h1 {
         font-size: 1.2rem;
       }
-      
+
       model-viewer {
         height: 250px;
       }
@@ -92,7 +93,8 @@
     ar
     ar-modes="scene-viewer quick-look webxr"
     auto-rotate
-    camera-controls>
+    camera-controls
+    src="https://thething303.github.io/3D-Model-Hosting/Hilux-Rack-v1.glb">
   </model-viewer>
 
   <!-- AR Link will be injected here -->
